@@ -1,0 +1,28 @@
+.mat-toolbar {
+  background: var(--green-2) !important;
+  position: sticky;
+  color: var(--green-6);
+  .icon-login {
+    margin-top: 5px;
+  }
+
+  button {
+    outline: none;
+    border: 0;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    padding-left: 10px;
+  }
+  .btn-login {
+    font-size: 20px;
+  }
+  .btn-login:hover,
+  .btn-left:hover {
+    color: var(--green-4);
+  }
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
