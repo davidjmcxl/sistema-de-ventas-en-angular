@@ -4,22 +4,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HeaderComponent } from './header/header.component';
+import { PipesModule } from '../pipes/pipes.module';
+import { TablesComponent } from './tables/tables.component';
+
 
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    TablesComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    PipesModule
   ],
   exports:[
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    TablesComponent
   ],
 })
 export class SharedModule { }

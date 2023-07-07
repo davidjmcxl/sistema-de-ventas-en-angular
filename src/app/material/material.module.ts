@@ -8,6 +8,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
  exports:[
   MatMenuModule,
@@ -18,7 +20,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   MatDialogModule,
   MatInputModule,
   MatButtonModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatTableModule
+
+
  ]
 })
 export class MaterialModule { }

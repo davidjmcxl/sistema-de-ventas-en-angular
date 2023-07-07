@@ -1,22 +1,25 @@
-import { AllItemsComponent } from './pages/all-items/all-items.component';
-import { SellerAuthComponent } from './pages/seller-auth/seller-auth.component';
-import { HomeComponent } from './pages/home/home.component';
+
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
-    path: '',component:HomeComponent
-  },{
-    path:'seller',component:SellerAuthComponent
-  },
-  {
-    path:'all-items',component:AllItemsComponent
-  },
-  {
-    path:'**',redirectTo:''
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   }
+  ,{
+    path: 'dashboard',
+    canActivate:[AuthGuard],
+    canLoad:[AuthGuard],
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
 
+
+  }
+  ,{
+    path: '**', redirectTo: 'auth'
+  }
 ];
 
 @NgModule({

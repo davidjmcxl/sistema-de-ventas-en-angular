@@ -1,0 +1,27 @@
+<div class="frame">
+  <div class="sign-title">
+    <h2>  Sign in</h2>
+    <mat-icon>face</mat-icon>
+
+
+  </div>
+
+
+    <form [formGroup]="loginForm" (submit)="login()">
+      <div class="user-box">
+
+        <input  type="email" name="email" formControlName="correo" autocomplete="off" />
+        <div class="label"></div>
+        <label for="email">Email: </label>
+        </div>
+        <div class="user-box">
+        <input  type="password" name="password" formControlName="clave"/>
+        <label for="username">password:</label>
+        </div>
+
+        <button type="submit">Login </button>
+
+
+    </form>
+
+</div>

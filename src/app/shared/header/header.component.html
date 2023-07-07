@@ -2,17 +2,38 @@
 
   <p>
     <mat-toolbar >
-      <button mat-icon-button  (click)="toggleSidebar()" class="example-icon" aria-label="Example icon-button with menu icon" >
-        <mat-icon>menu</mat-icon>
+      <button mat-icon-button  class="btn" (click)="toggleSidebar()" class="example-icon" aria-label="Example icon-button with menu icon" >
+        <mat-icon>{{iconText}}</mat-icon>
       </button>
-      <span>Menu</span>
+      <span>{{textMenu}}</span>
       <span class="example-spacer"></span>
 
-        <button class="btn-login" (click)="openDialog()">Login </button>
-        <button class="btn-left">
-         <mat-icon>shopping_cart</mat-icon>
-</button>
-        <button class="btn-left" ><mat-icon class="icon-login">login</mat-icon></button>
+
+
+
+      <button class="btn btn-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <span class="user-name">{{user.usuario|titlecase}}</span>
+        <mat-icon>settings</mat-icon>
+      </button>
+        <div class="btn_menu">
+          <mat-menu class="customize" #menu="matMenu">
+              <div class="row settings">
+                <div class="col-5">
+                  <img [src]="user.imagen |imagen:'users'" class="img_header">
+                </div>
+                <div class="col info-user-lg " >
+                  <p><span class="fs-6 fw-bold">{{user.nombre|titlecase}}</span></p>
+                  <p><span class="fs-6 fw-bold">Rol: <span class="fs-6 fw-normal" >{{role}}</span> </span></p>
+                  <p><span class="fs-7 fw-light">{{user.correo}} </span></p>
+                </div>
+              </div>
+
+              <button  class="text-start fs-6"mat-menu-item  routerLink="/dashboard/settings"><mat-icon class="icon-login">settings</mat-icon>Settings</button>
+            <button  class="text-start   fs-6"mat-menu-item  (click)="logout()"><mat-icon class="icon-login">login</mat-icon>Logout</button>
+          </mat-menu>
+        </div>
+
+
 
 
 

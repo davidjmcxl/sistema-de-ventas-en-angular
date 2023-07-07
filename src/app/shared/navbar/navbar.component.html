@@ -1,28 +1,19 @@
-<mat-nav-list>
-  <div class="nav-title">
-    <h1 matSubheader>E-Commerce APP</h1>
-  </div>
 
-  <hr />
-  <div class="nav">
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/content">
-      <mat-icon>home</mat-icon> Home
-    </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/seller">
-      <mat-icon>description</mat-icon>Seller
-    </a>
-    <a
-      mat-list-item
-      routerLinkActive="list-item-active"
-      routerLink="/all-items"
-    >
-      <mat-icon>assignment</mat-icon> All items
-    </a>
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/skills">
-      <mat-icon
-        ><span class="material-symbols-outlined"> checklist </span></mat-icon
-      >
-      Categories
-    </a>
+<mat-nav-list class="nav-top">
+  <div class="nav-title">
+    <h1 matSubheader>Sales system</h1>
   </div>
+<hr class="divider">
+  <ul class="list-group" *ngFor="let item of menu">
+    <li  class="nav-item">
+      <a mat-list-item  routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+       class="list-group-item" routerLink="/dashboard/{{item.path}}">
+        <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
+      </a>
+    </li>
+
+    <hr class="dividerMid">
+  </ul>
+
 </mat-nav-list>

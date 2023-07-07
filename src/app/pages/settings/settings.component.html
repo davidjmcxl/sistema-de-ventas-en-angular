@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <h1 class="text-center title-text">
+    User Settings </h1>
+<div class="row ">
+  <div class="col-7 text-center">
+    <img [src]="user.imagen |imagen:'users'" class="img-settings">
+  </div>
+  <div class="col-5">
+    <form [formGroup]="formSettings" (ngSubmit)="actualizar()">
+    <mat-form-field>
+
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" formControlName="nombre">
+      <button  matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="correo" >
+      <button  matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nombre user</mat-label>
+      <input  matInput disabled [value]="user.usuario">
+
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <input  matInput disabled [value]="role"   >
+
+    </mat-form-field>
+
+    <button type="submit" class="text-center" mat-flat-button color="primary">Editar</button>
+  </form>
+</div>
+</div>
+</div>
