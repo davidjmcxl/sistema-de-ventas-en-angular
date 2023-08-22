@@ -1,118 +1,103 @@
-.frame{
+.frame {
   position: absolute;
   top: 50%;
-left: 52%;
-width: 400px;
-padding: 40px;
-transform: translate(-50%,-50%);
-background:
-linear-gradient(
-rgba(35,43,85,0.75),
-rgba(35,43,85,0.95)),
-url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/clouds-cloudy-forest-mountain.jpg) no-repeat center center;
-box-sizing: border-box;
-box-shadow: 15px 15px rgba(137, 139, 178, 0.897);
-border-radius: 10px;
-.sign-title{
-  width: 90%;
-  height: 70px;
-  margin: 0 0 30px 0;
-  display: flex;
-  justify-content: space-around;
+  left: 52%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(rgba(35, 43, 85, 0.75), rgba(35, 43, 85, 0.95)),
+    url(https://dl.dropboxusercontent.com/u/22006283/preview/codepen/clouds-cloudy-forest-mountain.jpg)
+      no-repeat center center;
+  box-sizing: border-box;
+  box-shadow: 15px 15px rgba(137, 139, 178, 0.897);
+  border-radius: 10px;
+  .sign-title {
+    width: 90%;
+    height: 70px;
+    margin: 0 0 30px 0;
+    display: flex;
+    justify-content: space-around;
 
-  h2{
-
-    font-size: 1.6rem;
-    color: #fff;
-    text-align: center;
-    margin: 0;
-
-  }
-   mat-icon{
+    h2 {
+      font-size: 1.6rem;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+    }
+    mat-icon {
       font-size: 40px;
 
-
-      color: var(--blue-6 );
+      color: var(--blue-6);
     }
+  }
 
-}
+  .user-box {
+    position: relative;
+    input {
+      width: 70%;
+      padding: 10px 0;
+      font-size: px;
+      margin-left: 90px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+      &:focus ~ label,
+      input:valid ~ label {
+        top: -30px;
+        left: 0;
+        color: var(--blue-6);
+      }
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: var(--blue-1);
 
-.user-box{
-  position: relative;
-  input{
-    width: 70%;
-    padding: 10px 0;
-    font-size: px;
-    margin-left : 90px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-    &:focus ~ label,
-  input:valid ~ label{
-    top: -30px;
-    left: 0;
+      transition: 0.5s;
+    }
+  }
+  form button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
     color: var(--blue-6);
-
-
-  }
-  }
-  label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
     font-size: 16px;
-    color: var(--blue-1);
-
-    transition: .5s;
-  }
-
-
-
-}
-form button{
-  position: relative;
-  display: inline-block;
-  padding: 10px 20px;
-  color: var(--blue-6);
-  font-size: 16px;
-  text-decoration: none;
-  background-color: var(--blue-3);
-  border-radius: 5px;
-  border: none;
-  font-weight:bolder;
-  overflow: hidden;
-  transition: .5s;
-  margin-top: 40px;
-  letter-spacing: 1px;
-  &:hover{
-    background: var(--blue-6);
-    color: var(--blue-2);
+    text-decoration: none;
+    background-color: var(--blue-3);
     border-radius: 5px;
-    box-shadow: 0 0 5px var(--blue-3),
-                0 0 25px var(--blue-3),
-                0 0 50px var(--blue-3),
-                0 0 100px var(--blue-3);
+    border: none;
+    font-weight: bolder;
+    overflow: hidden;
+    transition: 0.5s;
+    margin-top: 40px;
+    letter-spacing: 1px;
+    &:hover {
+      background: var(--blue-6);
+      color: var(--blue-2);
+      border-radius: 5px;
+      box-shadow: 0 0 5px var(--blue-3), 0 0 25px var(--blue-3),
+        0 0 50px var(--blue-3), 0 0 100px var(--blue-3);
+    }
   }
-
-}
 }
 
-.account{
+.account {
   float: right;
-  color:var(--blue-4);
+  color: var(--blue-4);
   font-size: 14px;
-  a{
-    color:var(--blue-4);
+  a {
+    color: var(--blue-4);
     text-decoration: none;
     font-size: 12px;
     cursor: pointer;
-    &:hover{
-      color:var(--blue-6);
+    &:hover {
+      color: var(--blue-6);
     }
   }
 }
-

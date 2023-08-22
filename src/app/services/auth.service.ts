@@ -16,6 +16,10 @@ export class AuthService {
   get token(){
     return localStorage.getItem('token') || '';
   }
+  get id(){
+    return this.user.idusuario;
+
+  }
   constructor(private http:HttpClient,private router:Router) { }
   login(user:Auth){
     const url=`${base_url}/auth`;

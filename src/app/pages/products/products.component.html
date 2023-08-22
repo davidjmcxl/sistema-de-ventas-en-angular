@@ -1,1 +1,255 @@
-<p>products works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search product"
+          aria-label="Recipient's productname"
+          aria-describedby="button-addon2"
+          #termino
+          (keyup)="searchProduct(termino.value)"
+        />
+        <button
+          class="btn btn-search"
+          type="button"
+          id="button-addon2"
+          (click)="searchProduct(termino.value)"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 text-center mb-3">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="openModalCreateProduct()"
+      >
+        Create Product <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <div class="table">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="codproducto">
+          <th mat-header-cell *matHeaderCellDef>ID.</th>
+          <td mat-cell *matCellDef="let product">
+            {{ product.codproducto }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="imagen">
+          <th mat-header-cell *matHeaderCellDef>IMG</th>
+          <td mat-cell *matCellDef="let product"> <img [src]="product.imagen |imagen:'products'" class="img_tbl"></td>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+          <td mat-cell *matCellDef="let product">{{ product.descripcion }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef>Precio</th>
+          <td mat-cell *matCellDef="let product">{{ product.precio   | currency }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="existencia">
+          <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+          <td mat-cell *matCellDef="let product">{{ product.existencia }}</td>
+        </ng-container>
+        <ng-container matColumnDef="proveedor">
+          <th mat-header-cell *matHeaderCellDef>Proveedor</th>
+          <td mat-cell *matCellDef="let product">
+            {{product.proveedor }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef>Accions</th>
+          <td mat-cell *matCellDef="let product">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="openModalUpdate(product)"
+              aria-label="Example icon button with a home icon"
+            >
+              <mat-icon>edit</mat-icon></button
+            >|
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteProduct(product)"
+              aria-label="Example icon button with a heart icon"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+<!-- Modal Create product -->
+<ng-template #contenidoCreate let-modal>
+  <form [formGroup]="modalFormCreate" (ngSubmit)="CreateProduct()">
+    <div class="modal-body p-5">
+      <h1 class="text-center">Create product</h1>
+      <div class="mb-2">
+        <label for="proveedor" class="col-form-label">Proveedor:</label>
+
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="proveedor"
+        >
+          <option value="0" selected>Seleccione un proveedor</option>
+
+          <option value="{{provider.codproveedor}}" *ngFor="let provider of providers">{{provider.proveedor}}</option>
+
+        </select>
+          <span *ngIf="isValidField('proveedor')" class="form-text text-danger">
+          {{ getFieldError("proveedor") }}
+        </span>
+      </div>
+      <div class="mb-2">
+        <label for="descripcion" class="col-form-label">Descripcion:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="descripcion"
+          id="descripcion"
+        />
+        <span *ngIf="isValidField('descripcion')" class="form-text text-danger">
+          {{ getFieldError("descripcion") }}
+        </span>
+      </div>
+
+      <input type="hidden" formControlName="usuario_id" />
+      <div class="mb-2">
+        <label for="existencia" class="col-form-label">Existencia:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="existencia"
+          id="existencia"
+        />
+        <span *ngIf="isValidField('existencia')" class="form-text text-danger">
+          {{ getFieldError("existencia") }}
+        </span>
+      </div>
+      <div class="mb-2">
+        <label for="precio" class="col-form-label">Precio</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="precio"
+          id="precio"
+        />
+        <span *ngIf="isValidField('precio')" class="form-text text-danger">
+          {{ getFieldError("precio") }}
+        </span>
+      </div>
+    </div>
+<div class="text-center">
+    <span *ngIf="msgError&&imagenSubir==undefined" class="form-text text-danger text-center">
+      {{ msgError }}
+    </span>
+  </div>
+
+    <div class=" text-center">
+
+      <img  *ngIf="!imgTemp"  class="img-settings">
+      <img *ngIf="imgTemp" [src]="imgTemp" class="img-product" alt="img" />
+      <div class="file-select mt-2" id="src-file2">
+        <input type="file" (change)="cambiarImg($event)" /><br /><br />
+      </div>
+
+    </div>
+    <div class="modal-footer text-center">
+      <button type="submit" mat-flat-button color="primary"  [disabled]="modalFormCreate.invalid">Create</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close()">
+        cancelar
+      </button>
+    </div>
+  </form>
+</ng-template>
+
+<!-- Modal udpdate -->
+<ng-template #contenidoUpdate let-modal>
+  <form [formGroup]="modalForm" (ngSubmit)="updateProduct()">
+    <div class="modal-body p-5">
+      <h1 class="text-center">update product</h1>
+      <div class="mb-2">
+        <label for="proveedor" class="col-form-label">Proveedor:</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="proveedor"
+        >
+
+
+          <option value="{{provider.codproveedor}}" *ngFor="let provider of providers">{{provider.proveedor}}</option>
+
+        </select>
+      </div>
+      <div class="mb-2">
+        <label for="descripcion" class="col-form-label">Descripcion:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="descripcion"
+          id="descripcion"
+        />
+      </div>
+
+      <input type="hidden" formControlName="usuario_id" />
+      <div class="mb-2">
+        <label for="existencia" class="col-form-label">Existencia:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="existencia"
+          id="existencia"
+        />
+      </div>
+      <div class="mb-2">
+        <label for="precio" class="col-form-label">Precio</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="precio"
+          id="precio"
+        />
+      </div>
+      <div class=" text-center">
+
+        <img  *ngIf="!imgTemp" [src]="dataModal.imagen |imagen:'products'"  class="img-product">
+        <img *ngIf="imgTemp" [src]="imgTemp" class="img-product" alt="img" />
+        <div class="file-select mt-2" id="src-file2">
+          <input type="file" (change)="cambiarImg($event)" /><br /><br />
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer text-center">
+      <button type="submit" mat-flat-button color="primary">Update</button>
+      <button type="button" class="btn btn-danger" (click)="modal.close()">
+        cancelar
+      </button>
+    </div>
+  </form>
+</ng-template>

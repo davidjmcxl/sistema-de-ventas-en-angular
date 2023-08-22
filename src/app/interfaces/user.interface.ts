@@ -8,4 +8,5 @@ export interface UserElement {
   correo:    string;
   usuario:   string;
   rol:       string;
+  imagen:string;
 }

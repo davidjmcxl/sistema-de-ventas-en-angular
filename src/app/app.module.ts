@@ -9,9 +9,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
-import { ImagenPipe } from './pipes/imagen.pipe';
-import { PipesModule } from './pipes/pipes.module';
+
 import { InterceptorAuthService } from './interceptors/interceptor-auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { InterceptorAuthService } from './interceptors/interceptor-auth.service'
     BrowserAnimationsModule,
     MaterialModule,HttpClientModule,
     AuthModule,
+    NgbModule,
   ],
   exports:[
 

@@ -6,11 +6,7 @@ let menu:any[]=[
     icon:'home',
     path:''
   },
-  {
-    title:'Sales',
-    icon:'leaderboard',
-    path:'sales'
-  },
+
 
   {
     title:'Customers',
@@ -31,6 +27,24 @@ let menu:any[]=[
     title:'Products',
     icon:'shopping_cart',
     path:'products'
+  },
+  {
+    title:'Sales',
+    icon:'arrow_drop_down',
+    path:'sales',
+    opt1:
+      {
+        title:'New Sale',
+        icon:'add_shopping_cart',
+        path:'newSale'
+      },
+      opt2: {
+        title:'List Sales',
+        icon:'leaderboard',
+        path:'sales'
+      }
+
+
   },
 ];
 @Injectable({

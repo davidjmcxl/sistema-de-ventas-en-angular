@@ -13,8 +13,11 @@ import { SalesComponent } from './sales/sales.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SettingsComponent } from './settings/settings.component';
 import { PipesModule } from '../pipes/pipes.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewSaleComponent } from './new-sale/new-sale.component';
+
 
 
 
@@ -26,11 +29,15 @@ import { UsersComponent } from './users/users.component';
     ProvidersComponent,
     SalesComponent,
     SettingsComponent,
-    UsersComponent
+    UsersComponent,
+    DashboardComponent,
+    NewSaleComponent,
+
 
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MaterialModule,HttpClientModule,
     SharedModule,
     PagesRoutingModule,

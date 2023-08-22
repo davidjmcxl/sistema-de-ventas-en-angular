@@ -1,1 +1,83 @@
-<p>sales works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search Sales"
+          aria-label="Recipient's providername"
+          aria-describedby="button-addon2"
+          #termino
+          (keyup)="searchSales(termino.value)"
+        />
+        <button
+          class="btn btn-search"
+          type="button"
+          id="button-addon2"
+          (click)="searchSales(termino.value)"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 text-center mb-3">
+      <button
+        mat-flat-button
+        color="primary"
+      routerLink="/dashboard/newSale"
+
+      >
+        Create Sales <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <div class="table">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID.</th>
+          <td mat-cell *matCellDef="let sale">
+            {{ sale.nofactura }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef>Fecha</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.fecha|date }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="cliente">
+          <th mat-header-cell *matHeaderCellDef>Cliente</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.cliente }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="vendedor">
+          <th mat-header-cell *matHeaderCellDef>Vendedor</th>
+          <td mat-cell *matCellDef="let sale">{{ sale.vendedor }}</td>
+        </ng-container>
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef>Total .</th>
+          <td mat-cell *matCellDef="let sale">
+            {{ sale.totalfactura  |currency}}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      [pageSizeOptions]="[ 7,5, 10]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>
+
+

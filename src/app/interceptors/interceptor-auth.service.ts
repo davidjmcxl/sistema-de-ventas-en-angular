@@ -31,9 +31,6 @@ export class InterceptorAuthService implements HttpInterceptor {
 
 
   manejarError( error: HttpErrorResponse ) {
-    console.log('Sucedió un error');
-    console.log('Registrado en el log file');
-    console.warn(error);
-    return throwError('Error personalizado');
+    return throwError(error);
   }
 }

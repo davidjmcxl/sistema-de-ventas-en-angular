@@ -5,12 +5,30 @@
   </div>
 <hr class="divider">
   <ul class="list-group" *ngFor="let item of menu">
-    <li  class="nav-item">
-      <a mat-list-item  routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
+    <li  class="nav-item"  *ngIf="item.path!=='sales'">
+          <a mat-list-item  routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
        class="list-group-item" routerLink="/dashboard/{{item.path}}">
         <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
       </a>
+    </li>
+
+    <li class="nav-item "  *ngIf="item.path=='sales'">
+      <a mat-list-item routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }" class="list-group-item" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="false"
+       role="button" > <mat-icon>{{item.icon}}</mat-icon> {{item.title}}</a>
+
+
+      <ul class="dropdown-menu " >
+        <li class="subitem"><a  mat-list-item class="dropdown-item"   routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="list-group-item" routerLink="/dashboard/{{item.opt1.path}}" ><mat-icon>{{item.opt1.icon}}</mat-icon> {{item.opt1.title}}</a></li>
+          <li><a mat-list-item class="dropdown-item"   routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="list-group-item" routerLink="/dashboard/{{item.opt2.path}}" ><mat-icon>{{item.opt2.icon}}</mat-icon> {{item.opt2.title}}</a></li>
+
+      </ul>
+
     </li>
 
     <hr class="dividerMid">

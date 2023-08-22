@@ -6,7 +6,7 @@ const base_url=environment.base_url;
 })
 export class ImagenPipe implements PipeTransform {
 
-  transform(img: string="", tipo:'users'|'providers'|'customers' |'products '): string {
+  transform(img: string="", tipo:'users'|'providers'|'customers' |'products'): string {
     if(img==""||!img)
       {
         return `${base_url}/uploads/${tipo}/no-image`

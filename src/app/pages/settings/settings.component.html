@@ -3,7 +3,19 @@
     User Settings </h1>
 <div class="row ">
   <div class="col-7 text-center">
-    <img [src]="user.imagen |imagen:'users'" class="img-settings">
+    <img  *ngIf="!imgTemp" [src]="user.imagen |imagen:'users'" class="img-settings">
+    <img *ngIf="imgTemp" [src]="imgTemp" class="img-settings" alt="img" />
+    <div class="file-select mt-2" id="src-file2">
+      <input type="file" (change)="cambiarImg($event)" /><br /><br />
+    </div>
+    <button
+      type="button"
+      [disabled]="!imagenSubir"
+      (click)="subirImagen()"
+      class="btn btn-success waves-effect waves-light"
+    >
+      cambiar imagen
+    </button>
   </div>
   <div class="col-5">
     <form [formGroup]="formSettings" (ngSubmit)="actualizar()">
@@ -11,15 +23,15 @@
 
       <mat-label>Nombre</mat-label>
       <input matInput type="text" formControlName="nombre">
-      <button  matSuffix mat-icon-button aria-label="Clear">
-        <mat-icon>close</mat-icon>
+      <button  matSuffix mat-icon-button aria-label="Clear" type="button">
+
       </button>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input matInput type="email" formControlName="correo" >
-      <button  matSuffix mat-icon-button aria-label="Clear">
-        <mat-icon>close</mat-icon>
+      <button  matSuffix mat-icon-button aria-label="Clear" type="button">
+
       </button>
     </mat-form-field>
     <mat-form-field>

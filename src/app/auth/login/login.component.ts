@@ -16,14 +16,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginForm=this.fb.group({
-      correo:['test433@gmail.com',[Validators.required,Validators.email]],
-      clave:['',Validators.required]
+      correo:['admin2@gmail.com',[Validators.required,Validators.email]],
+      clave:['123456',Validators.required]
     })
   }
   login(){
     this.authServices.login(this.loginForm.value).subscribe((resp:any)=>{
       this.router.navigateByUrl('/dashboard');
     },(err)=>{
+      console.log(err);
+
       const errEmail=this.loginForm.get('correo')?.value;
       const errPass=this.loginForm.get('clave')?.value;
       console.log(errPass);

@@ -9,14 +9,24 @@ import { RoleAdminGuard } from '../guards/role-admin.guard';
 import { RoleSupervisorGuard } from '../guards/role-supervisor.guard';
 import { ProductsComponent } from './products/products.component';
 import { SettingsComponent } from './settings/settings.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewSaleComponent } from './new-sale/new-sale.component';
+
 
 const routes: Routes = [
   {
     path:'',component:HomeComponent,
     children:[
       {
+        path: '',component:DashboardComponent
+      },
+      {
         path: 'sales',component:SalesComponent
       },
+      {
+        path: 'newSale',component:NewSaleComponent
+      },
+
       {
         path: 'providers',component:ProvidersComponent,
         canActivate:[RoleSupervisorGuard],
@@ -31,6 +41,7 @@ const routes: Routes = [
         canActivate:[RoleAdminGuard],
         canLoad:[RoleAdminGuard]
       },
+
       {
         path: 'products',component:ProductsComponent
       },

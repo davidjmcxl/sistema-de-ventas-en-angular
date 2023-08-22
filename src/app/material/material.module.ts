@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
  exports:[
   MatMenuModule,
@@ -22,7 +23,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   MatButtonModule,
   MatFormFieldModule,
   MatPaginatorModule,
-  MatTableModule
+  MatTableModule,
+  MatSelectModule
 
 
  ]
