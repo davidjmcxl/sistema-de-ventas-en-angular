@@ -14,17 +14,30 @@ export class SalesService {
   getVentas(){
     return this.http.get<Sale>(`${this.baseUrl}/ventas`);
   }
-
-  createCustomer(customer:CustomerElement){
-
-    return this.http.post<CustomerElement>(`${this.baseUrl}/clientes`,customer);
+  getProuctTemp(){
+    return this.http.get<any>(`${this.baseUrl}/ventas/productsTemp`);
   }
-  deleteCustomer(id:number){
-    return this.http.delete<Customer>(`${this.baseUrl}/clientes/${id}`);
+  addProductTemp(product:any){
+
+    return this.http.post<any>(`${this.baseUrl}/ventas/addProduct`,product);
+  }
+  deleteProductTemp(id:number){
+
+    return this.http.delete<any>(`${this.baseUrl}/ventas/deleteProduct/${id}`,);
   }
   updateCustomer(id:number,customer:CustomerElement){
 
     return this.http.put<CustomerElement>(`${this.baseUrl}/ventas/${id}`,customer);
+  }
+  proccessSales(body:any){
+    console.log(body);
+
+    return this.http.post<any>(`${this.baseUrl}/ventas/proccess`,body);
+  }
+  anularSales(){
+
+
+    return this.http.delete<any>(`${this.baseUrl}/ventas/anular`);
   }
   searchSales(termino:string){
     return this.http.get<Sale>(`${this.baseUrl}/search/ventas/${termino}`);

@@ -55,4 +55,7 @@ export class ProductService {
   searchProduct(termino:string){
     return this.http.get<Product>(`${this.baseUrl}/search/productos/${termino}`);
   }
+  searchProductById(id:string){
+    return this.http.get<Product>(`${this.baseUrl}/search/producto/${id}`);
+  }
 }

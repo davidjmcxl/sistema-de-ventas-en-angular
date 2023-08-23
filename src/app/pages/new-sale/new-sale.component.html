@@ -1,1 +1,136 @@
-<p>new-sale works!</p>
+<div class="container"><div class="row">
+
+  <div class="col col-customer">
+
+    <h2>Informacion Cliente</h2>
+    <mat-divider></mat-divider>
+    <form class="form-customer" [formGroup]="formCustomer" (ngSubmit)="registerCustomer()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Identification:</mat-label>
+        <input matInput  formControlName="nit" placeholder="" (keyup)="searchCustomer(termino.value)" #termino>
+      </mat-form-field>
+      <input type="hidden" formControlName="usuario_id" >
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="nombre" >
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Cell Phone</mat-label>
+          <input matInput formControlName="telefono">
+        </mat-form-field></td>
+      </tr></table>
+      <mat-form-field class="example-full-width">
+        <mat-label>Direccion:</mat-label>
+        <input matInput formControlName="direccion" >
+      </mat-form-field>
+
+      <button  mat-raised-button color="primary" type="submit" *ngIf="customer==undefined" [disabled]="formCustomer.invalid">Registrar</button>
+
+    </form>
+  </div>
+  <div class="col col-customer">
+
+    <h2>Informacion Venta</h2>
+    <mat-divider></mat-divider>
+    <form class="form-customer" [formGroup]="formProduct" (ngSubmit)="addProduct()">
+
+
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>ID product</mat-label>
+          <input matInput formControlName="codproducto" (keyup)="searchProduct(id.value,cantidad.value)" #id>
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Cantidad a comprar</mat-label>
+          <input matInput formControlName="cantidad"  (keyup)="searchProduct(id.value,cantidad.value)"  #cantidad>
+        </mat-form-field></td>
+      </tr></table>
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Descripcion</mat-label>
+          <input matInput formControlName="descripcion" >
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>precio</mat-label>
+          <input matInput formControlName="precio">
+        </mat-form-field></td>
+      </tr></table>
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Precio Total</mat-label>
+          <input matInput formControlName="total" >
+        </mat-form-field></td>
+        <td><button class="btn btn-success" type="submit">Añadir </button></td>
+      </tr></table>
+
+
+    </form>
+  </div>
+</div>
+<div class="mat-elevation-z8">
+  <div class="table">
+    <table mat-table [dataSource]="dataSource" *ngIf="data!.length>0">
+      <!-- Position Column -->
+      <ng-container matColumnDef="codproducto">
+        <th mat-header-cell *matHeaderCellDef>ID.</th>
+        <td mat-cell *matCellDef="let product">
+          {{ product.codproducto }}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+        <td mat-cell *matCellDef="let product">{{ product.descripcion }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let product">{{ product.precio_venta     | currency }}</td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+        <td mat-cell *matCellDef="let product">{{ product.cantidad }}</td>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let product">{{ product.cantidad *product.precio_venta  |currency  }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Accions</th>
+        <td mat-cell *matCellDef="let product">
+
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="deleteProduct(product.correlativo)"
+            aria-label="Example icon button with a heart icon"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+</div>
+<div class="row" *ngIf="data!.length>0&&formCustomer.valid">
+  <div class="col text-end">
+    <button  mat-raised-button color="primary" type="button" (click)="createVenta()" >Crear venta</button>
+  </div>
+  <div class="col ">
+    <button  mat-raised-button color="warn" type="button" (click)="cancel()" >Cancelar</button>
+  </div>
+</div>
+
+
+</div>
+
