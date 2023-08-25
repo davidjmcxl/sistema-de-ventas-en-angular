@@ -1,1 +1,74 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row p-5">
+    <div class="col-4">
+        <div class="card card-statistics">
+          <div class="card-body">
+
+            <div >
+              <div class="float-left">
+                <i class="fa fa-solid fa-thumbs-up text-primary icon-lg"></i>
+              </div>
+              <div class="float-right">
+                <h3 class="mb-0 text-right text-primary">Ingresos</h3>
+                <div class="fluid-container">
+                  <h3 class="font-weight-medium text-right mb-0">{{ingreso|currency}}</h3>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+          <div class="card card-statistics">
+            <div class="card-body">
+
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="fa fa-solid  fa-thumbs-down text-danger icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <h3 class="mb-0 text-right text-danger">Egresos</h3>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{egreso  |currency}}</h3>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="card card-statistics">
+            <div class="card-body">
+
+              <div class="clearfix">
+                <div class="float-left">
+                  <i class="fa fa-money-bill-alt text-success icon-lg"></i>
+                </div>
+                <div class="float-right">
+                  <h3 class="mb-0 text-right text-success">Ganancias</h3>
+                  <div class="fluid-container">
+                    <h3 class="font-weight-medium text-right mb-0">{{ganancia  |currency}}</h3>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+  </div>
+  <div class="barChart mt-5">
+    <h4 class="txth4">Total de ventas diarias</h4>
+  <canvas baseChart
+  [data]="barChartData"
+
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [type]="'bar'">
+</canvas>
+</div>
+</div>
+
+

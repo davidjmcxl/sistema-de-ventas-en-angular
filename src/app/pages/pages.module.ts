@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
+import { NgChartsModule } from 'ng2-charts';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CustomersComponent } from './customers/customers.component';
 import { ProductsComponent } from './products/products.component';
@@ -41,7 +42,7 @@ import { NewSaleComponent } from './new-sale/new-sale.component';
     MaterialModule,HttpClientModule,
     SharedModule,
     PagesRoutingModule,
-    PipesModule,ReactiveFormsModule
+    PipesModule,ReactiveFormsModule,NgChartsModule
 
       ],
 

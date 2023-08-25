@@ -17,6 +17,9 @@ export class SalesService {
   getProuctTemp(){
     return this.http.get<any>(`${this.baseUrl}/ventas/productsTemp`);
   }
+  getDashboard(){
+    return this.http.get<any>(`${this.baseUrl}/dashboard`);
+  }
   addProductTemp(product:any){
 
     return this.http.post<any>(`${this.baseUrl}/ventas/addProduct`,product);
